@@ -6,7 +6,6 @@ module.exports = {
 
   devServer: {
     contentBase: path.resolve(__dirname, './dist'),
-    allowedHosts: 'all',
     port: 3000,
     historyApiFallback: true,
     hot: true,
@@ -14,7 +13,6 @@ module.exports = {
       '/socket.io': {
         target: 'https://server-dis.onrender.com',
         ws: true,
-        rejectUnauthorized: false,
       },
     },
   },

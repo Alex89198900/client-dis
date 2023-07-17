@@ -4,7 +4,7 @@
   "description": "",
   "main": "webpack.base.config.js",
   "scripts": {
-    "start": "webpack serve --open --config ./webpack.config.js --env mode=dev&&process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0'",
+    "start": "webpack serve --open --config ./webpack.config.js --env mode=prod",
     "build": "webpack --config ./webpack.config.js --env mode=prod",
     "check-types": "tsc --noEmit",
     "eslint": "eslint --fix . --ext .ts --ext .js",
@@ -57,6 +57,7 @@
     "express-fileupload": "^1.4.0",
     "http": "^0.0.1-security",
     "moment": "^2.29.4",
+    "node_extra_ca_certs_mozilla_bundle": "^1.0.5",
     "process-env": "^2.0.2",
     "socket.io-client": "^4.5.4"
   },

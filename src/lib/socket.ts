@@ -3,20 +3,23 @@ import { SocketOptions } from 'engine.io-client';
 import { ManagerOptions, Socket, io } from 'socket.io-client';
 import { IncomingPersonalMessage } from '../store/app-store';
 import { ClientToServerEvents, ServerToClientEvents } from '../types/socket';
-import Server from 'socket.io-client';
-import https from 'https';
-//https.globalAgent.options.rejectUnauthorized = false;
 
 const socketOptions: Partial<ManagerOptions & SocketOptions> | undefined = {
-  rejectUnauthorized: false,
-  secure: true,
+  //rejectUnauthorized: false,
+  //secure: true,
   // reconnection: false,
   // reconnectionAttempts: 1,
   // reconnectionDelay: 100,
   port: 3000,
 };
 
-const socket: Socket<ServerToClientEvents, ClientToServerEvents> = io(socketOptions);
+const socket: Socket<ServerToClientEvents, ClientToServerEvents> = io('https://server-dis.onrender.com', {
+  withCredentials: true,
+  extraHeaders: {
+    'Access-Control-Allow-Origin': '*',
+  },
+});
+
 export const createSocketEvent = <K extends keyof ClientToServerEvents>(
   name: K,
   data: Parameters<ClientToServerEvents[K]>[0]
